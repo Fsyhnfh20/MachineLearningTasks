@@ -1,0 +1,78 @@
+SCRIPT UTS MACHINE LEARNING
+
+1. Pertama, kita cari dulu dataset yang ingin kita buat menggunakan model linear regression di kaggle. Setelah kita dapatkan datanya, kita bisa langsung download dataset tersebut. 
+
+2. Setelah itu kita menggunakan google colab untuk membuat programnya. Syntax ini akan menghunungkan/ memberikan izin akses google drive kita dengan google colab, yang nantinya kita dapat mengakses file atau data yang disimpan didalamnya. 
+
+3. Lalu, kita menggunakan beberapa library seperti pandas,numpy,matplotlib,dan seaborn.
+
+4. Lakukan pembacaan data dengan perintah pd.read_csv, syntax ini akan membaca data dari file csv dan menyimpannya ke dalam sebuah datafarme dengan variabel df. Variabel df untuk menampilkan isi dari dataFrame
+
+5. DataFrame yang kita pilih memiliki 2059 baris dan 20 kolom dimana kolom-kolom diantaranya yaitu Make, Model,Price, Year, Kilometer, Fuel Type, Transmission, Location, Color, Owner, Seller Type, Engine, Max Power, Max Torque, Drivetrain, Length, Width, Height, Seating, Capacity Fuel, Tank Capacity
+
+6. Selanjutnya ada EDA atau Exploration Data Analysis  adalah proses analisis awal pada dataset untuk memahami karakteristik, pola, dan informasi penting didalam DataFrame
+
+7. df.head(10) adalah syntax untuk menampilkan 10 baris teratas pada dataframe. Terlihat pada kolom make baris pertama itu ada honda, lalu maruti suzuki, dll
+
+8. df.describe () Menampilkan deskripsi statistik dari dataset seperti Count (Jumlah data), Mean (Rata-Rata), std (Standard Deviasion), Minimum, q1, q2, q3, dan Maksimum
+
+9. df.info() Memberikan informasi tentang struktur dataset, jumlah entri, tipe data, dan jumlah nilai non-null setiap kolom. Bisa dilihat misalnua pada kolom make jumlah nilai yang tidak kosong adalah 2059 dengan tipe data object.
+
+20. df.isnull().sum() Menampilkan jumlah nilai null (tidak terisi nilai) pada setiap kolom dataset.Misalnya pada kolom height terdapat 64 nilai yang kosong.
+
+21. Visualisasi pada dataframe biasanya digunakan untuk memahami dan menganalisis data dan juga dapat membantu mengidentifikasi pola,tren, dan hubungan dalam data. Disini ada berbagai visualisasi yang biasa digunakan yaitu 
+Pie Chart digunakan untuk menunjukkan proporsi relatif dari setiap kategori dalam satu set data
+
+Bar Chart menunjukkan frekuensi atau jumlah data pada setiap kategori
+
+Scatter Plot menujukkan hubungan antara dua variabel numerik.
+
+Box Plot digunakan untuk memberikan gambaran tentang distribusi data dan memberikan informasi tentang nilai-nilai ekstrim, nilai tengah dan sebaran data.
+
+Histogram menunjukkan distribusi frekuensi dari suatu variabel numerik.
+
+Heatmap menunjukkan matriks korelasi antar variabel.
+
+22. Visualisasi pertama itu ada pie chart, Dari Hasil visualisasi dengan pie chart dengan kolom Drivetrain, bahwa Front-Wheel Drive (FWD) yang paling mendominasi dengan persentase sebanyak 69.2%, lalu ada Rear while Drive (RWD) dengan persentase sebanyak 16.7% dan AWD dengan persentase sebanyak 14.1%. Jika dilihat RWD dan AWD memiliki persentase yang tidak beda jauh hanya 2.6% perbedaanya.
+
+23. Selanjutnya dengan bar chart. Disini kita menggunakan distribusi tahun pe,buatan mobil Pada syntax untuk membuat bar chart maksud dari figsize 12,6 yaitu mengatur ukuran dengan lebar 12 dan tinggi 6. Dari hasil visualisasi dengan bar chart pada tahun 2017 dan 2018 menunjukkan jumlah pembuatan mobil yang cukup tinggi, namun pada tahun 2019-2022 terjadi penurunan yang cukup signifikan.
+
+24. Selanjutnya dengan menggunakan scatter plot. Saya menggunakan hubungan antara harga dan kilometer yang sudah ditempuh. Hasil yang dihasilkan scatter plot terlihat titik-titik/plot cenderung berkumpul di satu titik atau membentuk pola yang sangat padat di satu area, ini menunjukkan bahwa terdapat sejumlah data yang memiliki nilai sama atau mirip dari kedua variabel tersebut.
+
+25. Selanjutnya ada boxplot. Disini saya menggunakan boxplot untuk memvisualisasikan Harga mobil berdasarkan tipe bahan bakar dihasilkan misalnya pada kolom petrol kotak boxplot menunjukkan kuartil pertama hingga kuartil ketiga dan garis didalamnua menunjukkan median (q2). Titik titik diluar kotak menunjukkan adanya nilai yang berbeda jauh dari distribusi umumnya.Jika kita lihat dari median (kotak)antara harga mobil diesel dan petrol bahwa diesel lebih tinggi daripada petrol. Lalu dieseil memiliki banyak outliers. bisa kita simpukan bahwa harga mobil petrol cenderung lebih tinggi dan mungkin memiliki variasi yang lebih besar.
+
+26.  Selanjutnya ada histogram. Jika histogram memiliki bentuk simetris maka distribusinya mungki mendekati distribusi normal. Namun jika Jika cenderung miring ke kiri atau kanan, distribusi tersebut bisa disebut sebagai distribusi miring negatif atau distribusi miring positif. Disini saya menggunakan distribusi harga mobil dimana Histogram yang dihasilkan cenderung miring ke kanan atau bisa disebut dengan distribusi positif. Pada sumbu Y (vertikal) tinggi batang histogram menunjukkan frekuensi jumlah observasi pada harga tertentu.
+
+27. Visualisasi yang terakhir adalah heatmap Warna dari setiap sel mempresentasikan tingkat korelasi antara dua variabel. Warna biru mengindikasikan korelasi negatif, sedangkan warna merah mengindikasikan korelasi positif. Lalu nilai korelasi yang tertulis dalam sel berkisar -1 hingga 1 menunjukkan nilai 1 itu korelasi positif sempurna, -1 korelasi negatif, 0 tidak ada korelasi. misalnya korelasi price dengan price menunjukkan warna merah artinya korelasi postif dan angka korelasinya itu 1 yg artinya korelasi positif juga. nah dapat disimpulkan aanya korelasi positid yang sangat kuat antara dua variabel tersebut.
+
+28.Training data dengan Linear Regression. Model Linear Regression adalah jenis model statistik yang digunakan untuk memodelkan hubungan linier antara satu atau lebih variabel dependen. Tujuannay untuk menemukan garis yang paling baik mewakili hubungan antara variabel independen dan variabel dependen.
+
+29. Lalu ada penjelasan mengenai library.
+
+30. Lalu load dataset lagi dengan file csv yang sama dan tampilkan 5 baris teratas.
+
+Syntax ini digunakan untuk membagi dataset menjadi variabel independen (X) dan variabel dependen (y). Dalam hal ini, kita menggunakan kolom price sebagai variabel dependen (X) dan kolom "Fuel Tank Capacity" sebagai variabel dependen (y).
+
+Syntax ini digunakan untuk membagi dataset menjadi data training dan data testing menggunakan fungsi train_test_split. X_train, y_train merupakan data training untuk variabel independen dan dependen, begitu juga sebaliknya X_test, y_test merupakan data tesing untuk variabel independen dan dependen.
+
+Syntax ini digunakan untuk membuat objek model regresi linear.
+
+Syntax ini digunakan untuk melatih model regresi liner menggunakan data training yang telah dibagi sebelumnya. Metode fit() digunakan untuk melatih model menggunakan data training.
+
+Syntax ini digunakan untuk membuat prediksi menggunakan model regresi linier yang telah dilatih pada data training (X_train). Hasil prediksi akan disimpan dalam variabel y_pred.
+
+Syntax ini digunakan untuk mengevaluasi model regresi linier menggunakan dua matrik evaluasi yaitu MSE (Mean Square Error) dan r2_score.
+
+Syntax ini menampilkan hasil evaluasi dari nilai MSE dan r2_score
+
+Menampilkan visualisasi regresi.
+
+31. sebelum kita melakukan linear regression dan sudah menentukan variabel independen dan dependen. Nah didalam variabel dependen dan independen ini gaboleh ada data yang kosong. Disini ke detect bahwa kolom fuel tank capacity memiliki data yang kosong sehingga saya mengganti data yang kosong tersebut dengan nilai 0
+
+32. (X, y, test_size=0.2, random_state=42) artinya fungsi ini membutuhkan variabel independen dan dependen yaitu x dan y lalu test_size = 0.2 menunjukkan bahwa kita ingin menyisihkan 20% dari data sebagai testing. Artinya, 80 % digunakan sebagai data training
+
+33. Setelah menjalankan syntax ini, variabel y_pred akan berisi nilai prediksi yang dihasilkan oleh model regresi linier berdasarkan variabel independen dari data testing (X_test). Selanjutnya, kita dapat menggunakan hasil prediksi ini untuk mengevaluasi kinerja model dengan membandingkannya dengan nilai sebenarnya (y_test).
+
+33. Selanjutnya evaluasi kinerja model regresi linear dengan MSE dan R-Swuared. MSE digunakan untuk mengukur rata-rata dari kuadrat seleisih antara nilai aktual dan nilai prediksi dan R2 mengukur sejauh mana variasi dalam variabel dependen dapat dijelaskan oleh model. Setelah didapatkan hasilnua bahwa nilai MSE yang lebih rendah dan Nilai R2 sebesar 0.0713 menunjukkan bahwa model hanya mampu menjelaskan sekitar 7.13% dari variasi dalam data. Nilai ini relatif rendah, menunjukkan bahwa model mungkin tidak sepenuhnya sesuai dengan pola dalam data atau mungkin perlu dimodifikasi untuk meningkatkan kinerjanya.
+
+34. Membuat Testing data baru. Syntax plt.subplot(1, 2, 1) digunakan untuk membuat subplot di dalam satu gambar dengan konfigurasi 1 baris dan 2 kolom, dan kita sedang bekerja pada subplot pertama.Dalam visualisasi ini, dua subplot disusun secara horizontal untuk membandingkan prediksi model pada data testing awal dan data testing baru. Warna biru mewakili nilai aktual, warna merah mewakili prediksi pada data testing awal, dan warna hijau mewakili prediksi pada data testing baru. Pastikan untuk menyesuaikan variabel independen dan dependen sesuai dengan data yang digunakan. Didapatkan nilai dari MSE nya adalah 285... dalam hal ini, nilai MSE relatif lebih rendah , menunjukkan bahwa model memberikan prediksi yang lebih baik pada data testing baru. Nilai R2 yang didapatkan 0.109.. meskipun nilainya tidak sangat tinggi, nilai positif ini menunjukkan bahwa  model hanya mampu menjelaskan sekitar 1.92% dari variasi dalam data.
